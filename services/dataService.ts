@@ -36,9 +36,6 @@ export const submitToGoogleSheet = async (user: UserData, card: Card) => {
   formData.append('dob', user.dob);
   formData.append('cardName', card.name);
   formData.append('cardTitle', card.title);
-  // Add Location Data
-  formData.append('latitude', user.latitude || '');
-  formData.append('longitude', user.longitude || '');
   formData.append('timestamp', new Date().toLocaleString('vi-VN'));
 
   // Log for debugging
