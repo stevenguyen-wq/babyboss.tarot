@@ -20,8 +20,6 @@ export interface UserData {
   fullName: string;
   phoneNumber: string;
   dob: string;
-  latitude?: string;
-  longitude?: string;
 }
 
 export type AppStep = 'FORM' | 'SHUFFLING' | 'RESULT';
