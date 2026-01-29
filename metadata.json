@@ -1,7 +1,5 @@
 {
   "name": "Baby Boss Gelato Tarot",
   "description": "A mystical Gelato Tarot game for Baby Boss customers to reveal their 2026 destiny and win ice cream vouchers.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
+  "requestFramePermissions": []
 }
