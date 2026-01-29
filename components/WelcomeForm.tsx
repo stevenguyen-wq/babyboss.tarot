@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { UserData } from '../types';
 import { checkHasPlayed } from '../services/dataService';
 
@@ -12,28 +12,6 @@ export const WelcomeForm: React.FC<WelcomeFormProps> = ({ onSubmit }) => {
   const [dob, setDob] = useState('');
   const [error, setError] = useState('');
   
-  // Location state
-  const [location, setLocation] = useState<{lat: string, lng: string} | null>(null);
-
-  // Request location immediately when form loads
-  useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocation({
-            lat: position.coords.latitude.toString(),
-            lng: position.coords.longitude.toString()
-          });
-          console.log("Location acquired");
-        },
-        (err) => {
-          console.warn("User denied location or error:", err);
-          // Don't block the user, just log it
-        }
-      );
-    }
-  }, []);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -54,13 +32,11 @@ export const WelcomeForm: React.FC<WelcomeFormProps> = ({ onSubmit }) => {
         return;
     }
 
-    // Submit with location if available
+    // Submit without location
     onSubmit({ 
       fullName, 
       phoneNumber, 
       dob,
-      latitude: location?.lat || '',
-      longitude: location?.lng || ''
     });
   };
 
